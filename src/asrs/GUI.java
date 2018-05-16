@@ -22,5 +22,9 @@ public class GUI extends JFrame  {
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		
+		TspPanel panel = new TspPanel();
+		
+		add(panel);
 	}
 }
