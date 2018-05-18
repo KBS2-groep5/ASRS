@@ -13,6 +13,14 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class JSONReadFromFile {
+		private String firstName;
+		private String lastName;
+        private String ordernr;
+		private String adress;
+		private String postcode;
+		private String place;
+		private String date;
+	
         
     public JSONReadFromFile(String filePath){
         JSONParser parser = new JSONParser();
@@ -22,14 +30,19 @@ public class JSONReadFromFile {
  
             JSONObject jsonObject = (JSONObject) obj;
  
-            String name = (String) jsonObject.get("Name");
-            String author = (String) jsonObject.get("Author");
-            JSONArray companyList = (JSONArray) jsonObject.get("Company List");
- 
-            System.out.println("Name: " + name);
-            System.out.println("Author: " + author);
-            System.out.println("\nCompany List:");
-            Iterator<String> iterator = companyList.iterator();
+            this.firstName = (String) jsonObject.get("Voornaam");
+			this.lastName = (String) jsonObject.get("Achternaam");
+            this.ordernr = (String) jsonObject.get("OrderNummer");
+			this.adress = (String) jsonObject.get("Adres");
+			this.postcode = (String) jsonObject.get("postcode");
+			this.place = (String) jsonObject.get("Plaats");
+			this.date = (String) jsonObject.get("Datum");
+			
+            JSONArray ProductList = (JSONArray) jsonObject.get("Artikelen");
+			
+            System.out.println("Naam: " + firstName + " " + lastName + " " + ordernr + " " + adress + " " + postcode + " " + place  + " " + date);
+            
+            Iterator<String> iterator = ProductList.iterator();
             while (iterator.hasNext()) {
                 System.out.println(iterator.next());
             }
@@ -38,4 +51,33 @@ public class JSONReadFromFile {
             e.printStackTrace();
         }
     }
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public String getOrdernr() {
+		return ordernr;
+	}
+
+	public String getAdress() {
+		return adress;
+	}
+
+	public String getPostcode() {
+		return postcode;
+	}
+
+	public String getPlace() {
+		return place;
+	}
+
+	public String getDate() {
+		return date;
+	}
+	
 }
