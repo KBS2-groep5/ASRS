@@ -235,8 +235,7 @@ public class GUItest extends javax.swing.JFrame {
                 File file = fc.getSelectedFile();
                 //This is where a real application would open the file.
                 System.out.println("Opening: " + file.getName() + ".");
-                
-                
+                JSONReadFromFile JSON = new JSONReadFromFile(file.getPath());
             } else {
                 System.out.println("Open command cancelled by user.");
             }
