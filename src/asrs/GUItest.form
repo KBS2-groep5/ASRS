@@ -61,9 +61,9 @@
                       <Component id="robotStatus" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" alignment="0" groupAlignment="0" attributes="0">
                               <Component id="amountLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -88,8 +88,9 @@
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                      <Component id="Ordernumber" min="-2" max="-2" attributes="0"/>
+                      <Component id="ordernumberLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="ordernumber" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -154,7 +155,10 @@
                           <Component id="stopButton" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="Ordernumber" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="ordernumberLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="ordernumber" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace pref="67" max="32767" attributes="0"/>
@@ -278,7 +282,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="java.awt.Label" name="Ordernumber">
+    <Component class="java.awt.Label" name="ordernumberLabel">
       <Properties>
         <Property name="alignment" type="int" value="2"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -289,6 +293,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Ordernummer :"/>
       </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Ordernummer laber"/>
+      </AccessibilityProperties>
     </Component>
     <Component class="java.awt.Canvas" name="BPPcanvas">
     </Component>
@@ -299,6 +306,17 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Robot Status"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="ordernumber">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="24" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Geen"/>
+      </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Order nummer"/>
+      </AccessibilityProperties>
     </Component>
   </SubComponents>
 </Form>

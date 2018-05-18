@@ -47,9 +47,10 @@ public class GUItest extends javax.swing.JFrame {
         orderInfo = new javax.swing.JScrollPane();
         orderInfoBox = new javax.swing.JTextArea();
         TSPcanvas = new java.awt.Canvas();
-        Ordernumber = new java.awt.Label();
+        ordernumberLabel = new java.awt.Label();
         BPPcanvas = new java.awt.Canvas();
         robotStatus = new java.awt.Label();
+        ordernumber = new javax.swing.JLabel();
 
         jScrollPane2.setViewportView(jTextPane2);
 
@@ -100,13 +101,16 @@ public class GUItest extends javax.swing.JFrame {
 
         TSPcanvas.setBackground(new java.awt.Color(255, 255, 255));
 
-        Ordernumber.setAlignment(java.awt.Label.RIGHT);
-        Ordernumber.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Ordernumber.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        Ordernumber.setText("Ordernummer :");
+        ordernumberLabel.setAlignment(java.awt.Label.RIGHT);
+        ordernumberLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ordernumberLabel.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        ordernumberLabel.setText("Ordernummer :");
 
         robotStatus.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         robotStatus.setText("Robot Status");
+
+        ordernumber.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        ordernumber.setText("Geen");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -129,9 +133,9 @@ public class GUItest extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(robotStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(amountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -150,8 +154,9 @@ public class GUItest extends javax.swing.JFrame {
                                 .addGap(10, 10, 10)))
                         .addGap(22, 22, 22))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(Ordernumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ordernumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ordernumber)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -200,11 +205,15 @@ public class GUItest extends javax.swing.JFrame {
                             .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(stopButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Ordernumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(ordernumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ordernumber))))
                 .addContainerGap(67, Short.MAX_VALUE))
         );
 
         uploadButton.getAccessibleContext().setAccessibleDescription("");
+        ordernumberLabel.getAccessibleContext().setAccessibleName("Ordernummer laber");
+        ordernumber.getAccessibleContext().setAccessibleName("Order nummer");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -254,7 +263,6 @@ public class GUItest extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Canvas BPPcanvas;
-    private java.awt.Label Ordernumber;
     private java.awt.Canvas TSPcanvas;
     private java.awt.Label amountLabel;
     private javax.swing.JLabel amountView;
@@ -262,6 +270,8 @@ public class GUItest extends javax.swing.JFrame {
     private javax.swing.JTextPane jTextPane2;
     private javax.swing.JScrollPane orderInfo;
     private javax.swing.JTextArea orderInfoBox;
+    private javax.swing.JLabel ordernumber;
+    private java.awt.Label ordernumberLabel;
     private javax.swing.JComboBox<String> orderpickBox;
     private java.awt.Label orderpickLabel;
     private java.awt.Label robotStatus;
