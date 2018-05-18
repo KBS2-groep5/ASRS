@@ -13,14 +13,14 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class JSONReadFromFile {
-		private String firstName;
-		private String lastName;
+        private String firstName;
+        private String lastName;
         private String ordernr;
-		private String adress;
-		private String postcode;
-		private String place;
-		private String date;
-	
+        private String adress;
+        private String postcode;
+        private String place;
+        private String date;
+	private JSONArray ProductList;
         
     public JSONReadFromFile(String filePath){
         JSONParser parser = new JSONParser();
@@ -31,22 +31,22 @@ public class JSONReadFromFile {
             JSONObject jsonObject = (JSONObject) obj;
  
             this.firstName = (String) jsonObject.get("Voornaam");
-			this.lastName = (String) jsonObject.get("Achternaam");
+            this.lastName = (String) jsonObject.get("Achternaam");
             this.ordernr = (String) jsonObject.get("OrderNummer");
-			this.adress = (String) jsonObject.get("Adres");
-			this.postcode = (String) jsonObject.get("postcode");
-			this.place = (String) jsonObject.get("Plaats");
-			this.date = (String) jsonObject.get("Datum");
-			
-            JSONArray ProductList = (JSONArray) jsonObject.get("Artikelen");
-			
+            this.adress = (String) jsonObject.get("Adres");
+            this.postcode = (String) jsonObject.get("Postcode");
+            this.place = (String) jsonObject.get("Plaats");
+            this.date = (String) jsonObject.get("Datum");
+            
+            this.ProductList = (JSONArray) jsonObject.get("Artikelen");
+            
             System.out.println("Naam: " + firstName + " " + lastName + " " + ordernr + " " + adress + " " + postcode + " " + place  + " " + date);
             
-            Iterator<String> iterator = ProductList.iterator();
+            Iterator<Integer> iterator = ProductList.iterator();
             while (iterator.hasNext()) {
                 System.out.println(iterator.next());
             }
- 
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -79,5 +79,9 @@ public class JSONReadFromFile {
 	public String getDate() {
 		return date;
 	}
+
+        public JSONArray getProductList() {
+            return ProductList;
+        }
 	
 }
