@@ -27,9 +27,14 @@ class TspPanel extends JPanel {
     
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        int item1[] = {2, 0};
+        int item2[] = {1, 4};
+        int[] arrays[] = {item1,item2};
         
+        for(int l = 0; l < arrays.length; l++){
         g.setColor(Color.green);
-        g.fillRect((this.x/5) * 3, (this.y/5) * 2, (this.x / 5), (this.y / 5));
+        g.fillRect((this.x/5) * arrays[l][0], (this.y/5) * arrays[l][1], (this.x / 5), (this.y / 5));
+        }
         
         for(int i = 0; i <= 5; i++){
             for(int t = 0; t <= 5; t++){
