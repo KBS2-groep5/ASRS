@@ -1,25 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package asrs;
 
-import javax.swing.UIManager;
+import java.io.File;
+import javax.swing.JFileChooser;
 
-/**
- *
- * @author binh_
- */
 public class GUItest extends javax.swing.JFrame {
-
-	/**
-	 * Creates new form GUItest
-	 */
+    JFileChooser fc;
+    
+    
 	public GUItest() {
-		initComponents();
-		
-		
+            fc = new JFileChooser();
+
+            fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+            
+            
+            
+            
+		initComponents();	
 	}
 
 	/**
@@ -232,9 +228,19 @@ public class GUItest extends javax.swing.JFrame {
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void uploadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadButtonActionPerformed
-        // TODO add your handling code here:
-        
-        
+         if (evt.getSource() == uploadButton) {
+            int returnVal = fc.showOpenDialog(GUItest.this);
+
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                File file = fc.getSelectedFile();
+                //This is where a real application would open the file.
+                System.out.println("Opening: " + file.getName() + ".");
+                
+                
+            } else {
+                System.out.println("Open command cancelled by user.");
+            }
+        }
     }//GEN-LAST:event_uploadButtonActionPerformed
 
 
