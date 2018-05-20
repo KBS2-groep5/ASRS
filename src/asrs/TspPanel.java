@@ -53,6 +53,13 @@ class TspPanel extends JPanel {
         g.fillRect(x * arrays[i][0], y * arrays[i][1], x, y);
         }
         
+        for(int i = 0; i <= 5; i++){
+            for(int t = 0; t <= 5; t++){
+                g.setColor(Color.black);
+                g.drawRect(x * i, y * t, x, y);
+            }
+        }
+        
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(3));
         
@@ -65,13 +72,6 @@ class TspPanel extends JPanel {
         }
         
         g2.setStroke(new BasicStroke(1));
-        
-        for(int i = 0; i <= 5; i++){
-            for(int t = 0; t <= 5; t++){
-                g.setColor(Color.black);
-                g.drawRect(x * i, y * t, x, y);
-            }
-        }
         
     }
     
