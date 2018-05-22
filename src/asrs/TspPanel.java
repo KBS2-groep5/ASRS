@@ -33,6 +33,7 @@ class TspPanel extends JPanel {
         int x = this.x/5;
         int y = this.y/5;
         
+        //x y ingepakt
         int item1[] = {2, 0, 1};
         int item2[] = {1, 4, 0};
         int item3[] = {3, 2, 0};

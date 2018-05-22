@@ -32,6 +32,7 @@ public class BppPanel extends JPanel {
         int x = this.x;
         int y = this.y;
         
+        //artikelnr lengte ingepakt
         int item1[] = {1, 2, 0};
         int item2[] = {2, 3, 1};
         int item3[] = {3, 1, 0};
