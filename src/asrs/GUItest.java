@@ -308,7 +308,7 @@ public class GUItest extends javax.swing.JFrame {
                     productsTable.setValueAt(connect.getName(productNr), i, 0);
                     
                     int[] products = connect.getData(productNr);
-
+                    
                     i++;
                 }
                 this.amountView.setText(Integer.toString(i));
