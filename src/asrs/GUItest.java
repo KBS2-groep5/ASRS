@@ -6,12 +6,14 @@ import java.util.Iterator;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import org.json.simple.JSONArray;
+import java.util.ArrayList;
 
 public class GUItest extends javax.swing.JFrame {
     JFileChooser fc;
     
     DbConnect db;
     
+    TspPanel tspPanel = new TspPanel();
     
 	public GUItest() {
             fc = new JFileChooser();
@@ -19,8 +21,7 @@ public class GUItest extends javax.swing.JFrame {
 
             fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
             
-            TspPanel tspPanel = new TspPanel();
-            add(tspPanel);
+            add(this.tspPanel);
             
             BppPanel bppPanel = new BppPanel();
             add(bppPanel);
@@ -300,6 +301,8 @@ public class GUItest extends javax.swing.JFrame {
                 this.name.setText(JSON.getFirstName() + " " + JSON.getLastName());
                 this.place.setText(JSON.getPlace());
                 
+                ArrayList<int[]> productList = new ArrayList<int[]>();
+                
                 JSONArray ProductList = JSON.getProductList();
                 Iterator<Long> iterator = ProductList.iterator();
                 int i = 0;
@@ -307,6 +310,8 @@ public class GUItest extends javax.swing.JFrame {
                     int productNr = toIntExact(iterator.next());
 
                     Package p = this.db.getPackage(productNr);
+                    int[] temp = new int[]{p.getX(), p.getY(), 0};
+                    productList.add(temp);
 
                     if(p == null) {
                         JOptionPane.showMessageDialog(null, "Opgevraagd product met id " + productNr + " staat niet in database");
@@ -318,6 +323,9 @@ public class GUItest extends javax.swing.JFrame {
 
                     i++;
                 }
+                
+                this.tspPanel.setProductList(productList);
+                
                 this.amountView.setText(Integer.toString(i));
             } else {
                 System.out.println("Open command cancelled by user.");
