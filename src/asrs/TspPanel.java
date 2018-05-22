@@ -33,24 +33,21 @@ class TspPanel extends JPanel {
         int x = this.x/5;
         int y = this.y/5;
         
-        int item1[] = {2, 0};
-        int item2[] = {1, 4};
-        int item3[] = {3, 2};
-        int item4[] = {0, 1};
-        int item5[] = {2, 2};
+        int item1[] = {2, 0, 1};
+        int item2[] = {1, 4, 0};
+        int item3[] = {3, 2, 0};
+        int item4[] = {0, 1, 0};
+        int item5[] = {2, 2, 1};
         
-        int[] arrays2[] = {item3,item4};
+        int[] order[] = {item1,item5,item3,item2,item4};
         
-        for(int i = 0; i < arrays2.length; i++){
-        g.setColor(Color.red);
-        g.fillRect(x * arrays2[i][0], y * arrays2[i][1], x, y);
-        }
-        
-        int[] arrays[] = {item1,item5,item2};
-        
-        for(int i = 0; i < arrays.length; i++){
-        g.setColor(Color.green);
-        g.fillRect(x * arrays[i][0], y * arrays[i][1], x, y);
+        for(int i = 0; i < order.length; i++){
+            if(order[i][2] == 1){
+                g.setColor(Color.green);
+            } else {
+                g.setColor(Color.red);
+            }
+        g.fillRect(x * order[i][0], y * order[i][1], x, y);
         }
         
         for(int i = 0; i <= 5; i++){
@@ -63,12 +60,10 @@ class TspPanel extends JPanel {
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(3));
         
-        int[] totalArrays[] = {item1,item5,item2,item3,item4};
-        
-        for(int i = 0; i < totalArrays.length - 1; i++){
+        for(int i = 0; i < order.length - 1; i++){
             g2.setColor(Color.blue);
             int offSet = x/2;
-            g2.drawLine(x * totalArrays[i][0] + offSet, y * totalArrays[i][1] + offSet, x * totalArrays[i + 1][0] + offSet, y * totalArrays[i + 1][1] + offSet);
+            g2.drawLine(x * order[i][0] + offSet, y * order[i][1] + offSet, x * order[i + 1][0] + offSet, y * order[i + 1][1] + offSet);
         }
         
         g2.setStroke(new BasicStroke(1));

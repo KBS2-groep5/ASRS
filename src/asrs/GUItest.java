@@ -286,8 +286,10 @@ public class GUItest extends javax.swing.JFrame {
             int returnVal = fc.showOpenDialog(GUItest.this);
 
             if (returnVal == JFileChooser.APPROVE_OPTION) {
+                //open DbConnection
+                DbConnect connect = new DbConnect();
+                
                 File file = fc.getSelectedFile();
-                //This is where a real application would open the file.
                 System.out.println("Opening: " + file.getName() + ".");
                 JSONReadFromFile JSON = new JSONReadFromFile(file.getPath());
 				
@@ -301,6 +303,13 @@ public class GUItest extends javax.swing.JFrame {
                 int i = 0;
                 while (iterator.hasNext()) {
                     productsTable.setValueAt(iterator.next(), i, 1);
+                    productsTable.setValueAt("test", i, 0);
+                    
+                    
+                    
+                    
+                    
+                    
                     i++;
                 }
                 this.amountView.setText(Integer.toString(i));
