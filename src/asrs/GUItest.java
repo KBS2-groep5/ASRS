@@ -1,6 +1,7 @@
 package asrs;
 
 import java.io.File;
+import static java.lang.Math.toIntExact;
 import java.util.Iterator;
 import javax.swing.JFileChooser;
 import org.json.simple.JSONArray;
@@ -299,16 +300,14 @@ public class GUItest extends javax.swing.JFrame {
                 this.place.setText(JSON.getPlace());
                 
                 JSONArray ProductList = JSON.getProductList();
-                Iterator<Integer> iterator = ProductList.iterator();
+                Iterator<Long> iterator = ProductList.iterator();
                 int i = 0;
                 while (iterator.hasNext()) {
-                    productsTable.setValueAt(iterator.next(), i, 1);
-                    productsTable.setValueAt("test", i, 0);
+                    int artikelnr = toIntExact(iterator.next());
+                    productsTable.setValueAt(artikelnr, i, 1);
+                    productsTable.setValueAt(connect.getName(artikelnr), i, 0);
                     
-                    
-                    
-                    
-                    
+                    int[] products = connect.getData(artikelnr);
                     
                     i++;
                 }

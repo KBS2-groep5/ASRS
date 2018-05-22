@@ -27,8 +27,8 @@ public class DbConnect {
         }
     }
     
-    public int getY(int artikelnr){
-        int y = 0;
+    public int[] getData(int artikelnr){
+        int[] data = new int[]{artikelnr,0,0};
         
         try{    
             PreparedStatement stmt = con.prepareStatement("select * from packages where artikelnr = ?");
@@ -38,33 +38,14 @@ public class DbConnect {
             //System.out.println("getting data");
             
             while(rs.next()){
-                y = rs.getInt("y");
+                data[1] = rs.getInt("x");
+                data[2] = rs.getInt("y");
             }
             
         }catch(Exception ex){
             System.out.println(ex);
         }
-        return y;
-    }
-    
-    public int getX(int artikelnr){
-        int x = 0;
-        
-        try{    
-            PreparedStatement stmt = con.prepareStatement("select * from packages where artikelnr = ?");
-            stmt.setInt(1, artikelnr);
-            rs = stmt.executeQuery();
-            
-            //System.out.println("getting data");
-            
-            while(rs.next()){
-                x = rs.getInt("x");
-            }
-            
-        }catch(Exception ex){
-            System.out.println(ex);
-        }
-        return x;
+        return data;
     }
         
     public String getName(int artikelnr){

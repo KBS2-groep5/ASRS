@@ -39,14 +39,7 @@ public class JSONReadFromFile {
             this.date = (String) jsonObject.get("Datum");
             
             this.ProductList = (JSONArray) jsonObject.get("Artikelen");
-            
-            System.out.println("Naam: " + firstName + " " + lastName + " " + ordernr + " " + adress + " " + postcode + " " + place  + " " + date);
-            
-            Iterator<Integer> iterator = ProductList.iterator();
-            while (iterator.hasNext()) {
-                System.out.println(iterator.next());
-            }
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
