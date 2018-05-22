@@ -27,12 +27,12 @@ public class DbConnect {
         }
     }
     
-    public int[] getData(int artikelnr){
-        int[] data = new int[]{artikelnr,0,0};
+    public int[] getData(int productNr){
+        int[] data = new int[]{productNr,0,0,0};
         
         try{    
-            PreparedStatement stmt = con.prepareStatement("select * from packages where artikelnr = ?");
-            stmt.setInt(1, artikelnr);
+            PreparedStatement stmt = con.prepareStatement("select * from packages where productNr = ?");
+            stmt.setInt(1, productNr);
             rs = stmt.executeQuery();
             
             //System.out.println("getting data");
@@ -40,6 +40,7 @@ public class DbConnect {
             while(rs.next()){
                 data[1] = rs.getInt("x");
                 data[2] = rs.getInt("y");
+                data[3] = rs.getInt("height");
             }
             
         }catch(Exception ex){
@@ -48,12 +49,12 @@ public class DbConnect {
         return data;
     }
         
-    public String getName(int artikelnr){
+    public String getName(int productNr){
         String name = "";
         
         try{    
-            PreparedStatement stmt = con.prepareStatement("select * from packages where artikelnr = ?");
-            stmt.setInt(1, artikelnr);
+            PreparedStatement stmt = con.prepareStatement("select * from packages where productNr = ?");
+            stmt.setInt(1, productNr);
             rs = stmt.executeQuery();
             
             //System.out.println("getting data");

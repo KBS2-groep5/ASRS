@@ -303,12 +303,12 @@ public class GUItest extends javax.swing.JFrame {
                 Iterator<Long> iterator = ProductList.iterator();
                 int i = 0;
                 while (iterator.hasNext()) {
-                    int artikelnr = toIntExact(iterator.next());
-                    productsTable.setValueAt(artikelnr, i, 1);
-                    productsTable.setValueAt(connect.getName(artikelnr), i, 0);
+                    int productNr = toIntExact(iterator.next());
+                    productsTable.setValueAt(productNr, i, 1);
+                    productsTable.setValueAt(connect.getName(productNr), i, 0);
                     
-                    int[] products = connect.getData(artikelnr);
-                    
+                    int[] products = connect.getData(productNr);
+
                     i++;
                 }
                 this.amountView.setText(Integer.toString(i));
