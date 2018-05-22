@@ -4,14 +4,18 @@ import java.io.File;
 import static java.lang.Math.toIntExact;
 import java.util.Iterator;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import org.json.simple.JSONArray;
 
 public class GUItest extends javax.swing.JFrame {
     JFileChooser fc;
     
+    DbConnect db;
+    
     
 	public GUItest() {
             fc = new JFileChooser();
+            db = new DbConnect();
 
             fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
             
@@ -287,9 +291,6 @@ public class GUItest extends javax.swing.JFrame {
             int returnVal = fc.showOpenDialog(GUItest.this);
 
             if (returnVal == JFileChooser.APPROVE_OPTION) {
-                //open DbConnection
-                DbConnect connect = new DbConnect();
-                
                 File file = fc.getSelectedFile();
                 System.out.println("Opening: " + file.getName() + ".");
                 JSONReadFromFile JSON = new JSONReadFromFile(file.getPath());
@@ -304,10 +305,15 @@ public class GUItest extends javax.swing.JFrame {
                 int i = 0;
                 while (iterator.hasNext()) {
                     int productNr = toIntExact(iterator.next());
-                    productsTable.setValueAt(productNr, i, 1);
-                    productsTable.setValueAt(connect.getName(productNr), i, 0);
-                    
-                    int[] products = connect.getData(productNr);
+                    Package p = this.db.getPackage(productNr);
+
+                    if(p == null) {
+                        JOptionPane.showMessageDialog(null, "Opgevraagd product met id " + productNr + " staat niet in database");
+                        continue;
+                    }
+
+                    productsTable.setValueAt(p.getProductNr(), i, 1);
+                    productsTable.setValueAt(p.getName(), i, 0);
 
                     i++;
                 }
