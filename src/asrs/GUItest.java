@@ -305,6 +305,7 @@ public class GUItest extends javax.swing.JFrame {
                 int i = 0;
                 while (iterator.hasNext()) {
                     int productNr = toIntExact(iterator.next());
+
                     Package p = this.db.getPackage(productNr);
 
                     if(p == null) {

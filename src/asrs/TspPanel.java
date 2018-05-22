@@ -27,6 +27,7 @@ class TspPanel extends JPanel {
         setBounds(10, 150, this.x, this.y);
     }
     
+    @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         
