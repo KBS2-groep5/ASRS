@@ -7,6 +7,7 @@ package asrs;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
@@ -18,6 +19,8 @@ public class BppPanel extends JPanel {
     
     private int x = 360;
     private int y = 415;
+    private ArrayList<int[]> packingList;
+    private boolean can = false;
     
     public BppPanel(){
         setBackground(Color.white);
@@ -26,48 +29,51 @@ public class BppPanel extends JPanel {
         setBounds(710, 80, this.x, this.y);
     }
     
+    public void setPackingList(ArrayList<int[]> packingList){
+        this.packingList = packingList;
+        this.can = true;
+        this.repaint();
+    }
+    
+    @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         
         int x = this.x;
         int y = this.y;
+        int boxLength = 10;
         
-        //artikelnr lengte ingepakt
-        int item1[] = {1, 2, 0};
-        int item2[] = {2, 3, 1};
-        int item3[] = {3, 1, 0};
-        int item4[] = {4, 4, 0};
-        int item5[] = {5, 1, 1};
-        int item6[] = {6, 5, 0};
-        int item7[] = {7, 2, 1};
-        
-        int[] doos1[] = {item1, item2, item3, item4};
-        int[] doos2[] = {item7, item6, item5};
-        int[][] dozen[] = {doos1,doos2};
-        
-        for(int i = 0; i < dozen.length; i++){
-            int s = 0;
-            for(int t = 0; t < dozen[i].length; t++){
-                int xPos = 0 + s;
-                int yPos = y / 5 * i;
-                int width = x / 10 * dozen[i][t][1];
-                int height = y / 5;
-                
-                if(dozen[i][t][2] == 1){
-                    g.setColor(Color.green);
-                } else {
-                    g.setColor(Color.red);
+        if(can == true){
+            ArrayList<ArrayList<int[]>> boxes = new ArrayList<ArrayList<int[]>>();
+            boxes.add(this.packingList);
+            
+            for(int i = 0; i < boxes.size(); i++){
+                int s = 0;
+                ArrayList<int[]> box = boxes.get(i);
+                for(int t = 0; t < box.size(); t++){
+                    int[] product = box.get(t);
+                    int xPos = 0 + s;
+                    int yPos = y / 5 * i;
+                    int boxHeight = y / 5;
+                    int height = x / 10 * product[1];
+
+                    if(product[2] == 1){
+                        g.setColor(Color.green);
+                    } else {
+                        g.setColor(Color.red);
+                    }
+
+                    g.fillRect(xPos, yPos, height, boxHeight);
+                    g.setColor(Color.black);
+                    g.drawRect(xPos, yPos, height, boxHeight);
+
+                    g.drawString(Integer.toString(product[0]), xPos + (height / 2), yPos + (boxHeight / 2));
+
+                    s += (x / boxLength * product[1]);
                 }
 
-                g.fillRect(xPos, yPos, width, height);
-                g.setColor(Color.black);
-                g.drawRect(xPos, yPos, width, height);
-                
-                g.drawString(Integer.toString(dozen[i][t][0]), xPos + (width / 2), yPos + (height / 2));
-                
-                s += (x / 10 * dozen[i][t][1]);
             }
-            
+
         }
         
         for(int i = 0; i <= 5; i++){

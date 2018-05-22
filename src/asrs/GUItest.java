@@ -14,6 +14,7 @@ public class GUItest extends javax.swing.JFrame {
     DbConnect db;
     
     TspPanel tspPanel = new TspPanel();
+    BppPanel bppPanel = new BppPanel();
     
 	public GUItest() {
             fc = new JFileChooser();
@@ -23,7 +24,6 @@ public class GUItest extends javax.swing.JFrame {
             
             add(this.tspPanel);
             
-            BppPanel bppPanel = new BppPanel();
             add(bppPanel);
             
             initComponents();	
@@ -302,6 +302,7 @@ public class GUItest extends javax.swing.JFrame {
                 this.place.setText(JSON.getPlace());
                 
                 ArrayList<int[]> productList = new ArrayList<int[]>();
+                ArrayList<int[]> packingList = new ArrayList<int[]>();
                 
                 JSONArray ProductList = JSON.getProductList();
                 Iterator<Long> iterator = ProductList.iterator();
@@ -310,9 +311,13 @@ public class GUItest extends javax.swing.JFrame {
                     int productNr = toIntExact(iterator.next());
 
                     Package p = this.db.getPackage(productNr);
-                    int[] temp = new int[]{p.getX(), p.getY(), 0};
-                    productList.add(temp);
-
+                    
+                    int[] place = new int[]{p.getX(), p.getY(), 0};
+                    productList.add(place);
+                    
+                    int[] specs = new int[]{productNr, p.getHeight(), 0};
+                    packingList.add(specs);
+                    
                     if(p == null) {
                         JOptionPane.showMessageDialog(null, "Opgevraagd product met id " + productNr + " staat niet in database");
                         continue;
@@ -325,6 +330,8 @@ public class GUItest extends javax.swing.JFrame {
                 }
                 
                 this.tspPanel.setProductList(productList);
+                
+                this.bppPanel.setPackingList(packingList);
                 
                 this.amountView.setText(Integer.toString(i));
             } else {
