@@ -307,7 +307,7 @@ public class GUItest extends javax.swing.JFrame {
                     productsTable.setValueAt(productNr, i, 1);
                     productsTable.setValueAt(connect.getName(productNr), i, 0);
                     
-                    int[] products = connect.getData(productNr);
+                    int[] product = connect.getData(productNr);
                     
                     i++;
                 }
