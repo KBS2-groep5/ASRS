@@ -43,10 +43,12 @@ class TspPanel extends JPanel {
         int x = this.x/5;
         int y = this.y/5;
         
-        
+        //als er een productLijst is gePushed voert het volgende stuk uit
         if(can == true){
+            //dit is het tekenen van de pakketjes in de stelling dit gebeurd voor het tekenen van de stelling
             for(int i = 0; i < productList.size(); i++){
                 int[] product = productList.get(i);
+                //als het product ingepakt is is de kleur groen anders rood
                 if(product[2] == 1){
                     g.setColor(Color.green);
                 } else {
@@ -64,6 +66,7 @@ class TspPanel extends JPanel {
             }
         }
         
+        //als er een productLijst is gePushed voert het volgende stuk uit
         if(can == true){
             Graphics2D g2 = (Graphics2D) g;
             g2.setStroke(new BasicStroke(3));
